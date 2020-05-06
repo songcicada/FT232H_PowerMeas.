@@ -333,7 +333,7 @@ public class Engineer_Second extends AppCompatActivity
         strLog_format = time + "," + String.format("%.3f", PS1_I_total) + "," + String.format("%.3f", PSE1_I_total) + "," + String.format("%.3f", PSE1_V_total)
                              + "," + String.format("%.3f", PS2_I_total) + "," + String.format("%.3f", PSE2_I_total) + "," + String.format("%.3f", PSE2_V_total)
                              + "," + String.format("%.3f", PS3_I_total) + "," + String.format("%.3f", PSE3_I_total) + "," + String.format("%.3f", PSE3_V_total)
-                             + "," + String.format("%.3f", PS3_V) + "," + String.format("%.3f", PS3_OCP) + "\r\n";
+                             + "," + String.format("%.3f", PS3_V)       + "," + String.format("%.3f", PS3_OCP) + "\r\n";
 
         CSV_Data.add(strLog_format);
     }
