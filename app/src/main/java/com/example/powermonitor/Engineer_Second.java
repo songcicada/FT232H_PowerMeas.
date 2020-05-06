@@ -296,7 +296,7 @@ public class Engineer_Second extends AppCompatActivity
         if(PSE1_V == 0 ){ PSE1_V_total = 0; } else { PSE1_V_total  = PSE1_V * 6;}
         if(PSE2_V == 0 ){ PSE2_V_total = 0; } else { PSE2_V_total  = PSE2_V * 6;}
         if(PSE3_V == 0 ){ PSE3_V_total = 0; } else { PSE3_V_total  = PSE3_V * 6;}
-        if(PS3_V  == 0 ){ PS3_V_total  = 0; } else { PS3_V_total  = PS3_V * 6;}
+        if(PS3_V  == 0 ){ PS3_V_total  = 0; } else { PS3_V_total   = PS3_V * 6;}
         if(PS1_I  == 0 ){ PS1_I_total  = 0; } else { PS1_I_total   = (0.606 - PS1_I) * 100;}
         if(PS2_I  == 0 ){ PS2_I_total  = 0; } else { PS2_I_total   = (0.606 - PS2_I) * 100;}
         if(PS3_I  == 0 ){ PS3_I_total  = 0; } else { PS3_I_total   = (0.606 - PS3_I) * 100;}
