@@ -235,18 +235,18 @@ public class User_First extends AppCompatActivity
             }
             m_ftdi.uSleep(Start_Frequency);
 
-            PS3_I = PS_IV[0];
-            PS2_I = PS_IV[1];
-            PS1_I = PS_IV[2];
-            PSE3_V = PS_IV[3];
-            PSE2_V = PS_IV[4];
-            PSE1_V = PS_IV[5];
-            PSE3_I = PS_IV[6];
-            PSE2_I = PS_IV[7];
-            PSE1_I = PS_IV[8];
-            PS3_V = PS_IV[9];
+            PS3_I   = PS_IV[0];
+            PS2_I   = PS_IV[1];
+            PS1_I   = PS_IV[2];
+            PSE3_V  = PS_IV[3];
+            PSE2_V  = PS_IV[4];
+            PSE1_V  = PS_IV[5];
+            PSE3_I  = PS_IV[6];
+            PSE2_I  = PS_IV[7];
+            PSE1_I  = PS_IV[8];
+            PS3_V   = PS_IV[9];
             PS3_OCP = PS_IV[10];
-            PSE_NC = PS_IV[11];
+            PSE_NC  = PS_IV[11];
             PSE_Calculate();
             PSE_Value_View();
             OCP_LED();
