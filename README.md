@@ -3,7 +3,6 @@ FT232H for Simple Android App
 
 This Project was created for voltage and current measurement.
 
-
 If you have any questions, please contact me by e-mail.
 
   *Notice
