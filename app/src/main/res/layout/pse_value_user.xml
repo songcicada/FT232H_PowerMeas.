@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TableLayout
+        android:id="@+id/PSE_value_Table"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="5dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintVertical_bias="0.0"
+        android:stretchColumns="*">
+
+        <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight = "1">
+
+
+        <ImageView
+        android:id="@+id/ocp"
+        android:layout_width="35dp"
+        android:layout_height="60dp"
+        android:scaleType="center" />
+
+        <TextView
+        android:layout_width="35dp"
+        android:layout_height="60dp"
+        android:padding="5dp"
+        android:text="PS1"
+            android:gravity="center"
+        android:textSize="25sp"
+        android:fontFamily="@font/gmarketsansbold"/>
+        <TextView
+        android:layout_width="35dp"
+        android:layout_height="60dp"
+        android:padding="5dp"
+        android:text="PS2"
+            android:gravity="center"
+        android:textSize="25sp"
+        android:fontFamily="@font/gmarketsansbold"/>
+        <TextView
+        android:layout_width="35dp"
+        android:layout_height="60dp"
+        android:padding="5dp"
+        android:text="PS3"
+            android:gravity="center"
+        android:textSize="25sp"
+        android:fontFamily="@font/gmarketsansbold"/>
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight = "1">
+
+
+    <TextView
+        android:text="V"
+        android:layout_width="35dp"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:textSize="15sp"
+        android:fontFamily="@font/ridi"
+        android:textStyle="bold"/>
+
+
+        <TextView
+        android:id="@+id/PSE1_V"
+        android:layout_width="35dp"
+        android:layout_height="40dp"
+        android:paddingRight="10dp"
+        android:fontFamily="@font/gmarketsanslight"
+        android:gravity="center_vertical|right"
+        android:textSize="15sp" />
+
+        <TextView
+        android:id="@+id/PSE2_V"
+        android:layout_width="35dp"
+        android:layout_height="40dp"
+        android:gravity="center_vertical|right"
+        android:paddingRight="10dp"
+        android:textSize="15sp"
+        android:fontFamily="@font/gmarketsanslight" />
+        <TextView
+        android:id="@+id/PSE3_V"
+        android:layout_width="35dp"
+        android:layout_height="40dp"
+        android:gravity="center_vertical|right"
+        android:paddingRight="10dp"
+        android:textSize="15sp"
+        android:fontFamily="@font/gmarketsanslight" />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight = "1">
+
+
+    <TextView
+        android:layout_width="35dp"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:text="I"
+        android:textSize="15sp"
+        android:fontFamily="@font/ridi"
+        android:textStyle="bold"/>
+
+
+        <TextView
+        android:id="@+id/Total_PSE1_I"
+        android:layout_width="35dp"
+        android:layout_height="40dp"
+        android:gravity="center_vertical|right"
+        android:textSize="15sp"
+        android:paddingRight="10dp"
+        android:fontFamily="@font/gmarketsanslight" />
+        <TextView
+        android:id="@+id/Total_PSE2_I"
+        android:layout_width="35dp"
+        android:layout_height="40dp"
+        android:gravity="center_vertical|right"
+        android:textSize="15sp"
+        android:paddingRight="10dp"
+        android:fontFamily="@font/gmarketsanslight" />
+        <TextView
+        android:id="@+id/Total_PSE3_I"
+        android:layout_width="35dp"
+        android:layout_height="40dp"
+        android:gravity="center_vertical|right"
+        android:textSize="15sp"
+        android:paddingRight="10dp"
+        android:fontFamily="@font/gmarketsanslight" />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight = "1">
+
+        <TextView
+            android:layout_width="35dp"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:text="I_peak"
+            android:textSize="15sp"
+            android:fontFamily="@font/ridi"
+            android:textStyle="bold"/>
+
+
+        <TextView
+        android:id="@+id/PSE1_I_PEAK"
+        android:layout_width="35dp"
+        android:layout_height="40dp"
+        android:gravity="center_vertical|right"
+        android:textSize="15sp"
+        android:paddingRight="10dp"
+        android:fontFamily="@font/gmarketsanslight" />
+        <TextView
+        android:id="@+id/PSE2_I_PEAK"
+        android:layout_width="35dp"
+        android:layout_height="40dp"
+        android:gravity="center_vertical|right"
+        android:textSize="15sp"
+        android:paddingRight="10dp"
+        android:fontFamily="@font/gmarketsanslight" />
+        <TextView
+        android:id="@+id/PSE3_I_PEAK"
+        android:layout_width="35dp"
+        android:layout_height="40dp"
+        android:gravity="center_vertical|right"
+        android:textSize="15sp"
+        android:paddingRight="10dp"
+        android:fontFamily="@font/gmarketsanslight" />
+    </TableRow>
+        <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight = "1">
+        <TextView
+        android:id="@+id/OCP_Warning"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_span="4"
+        android:gravity="center"
+        android:textSize="25sp"
+        android:textColor="#d44e4e"
+        android:fontFamily="@font/gmarketsansbold" />
+        </TableRow>
+
+    </TableLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

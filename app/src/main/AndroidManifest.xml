@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.powermonitor">
 
+    <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
 
@@ -11,18 +12,31 @@
         android:label="@string/app_name"
         android:roundIcon="@drawable/ablee_logo"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/Main_AppTheme">
         <uses-library android:name="org.apache.http.legacy" android:required="false" />
         <activity android:name=".Main"
-            android:label="@string/app_name">
+                  android:label="@string/app_name">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
+                <action   android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".User_First"/>
-        <activity android:name=".Engineer_Second"/>
+        <activity android:name=".PSE_PAGE"
+                  android:theme="@style/PSE_AppTheme"/>
+        <activity android:name=".Action_Search"
+                  android:theme="@android:style/Theme.Dialog"/>
+        <activity android:name=".Action_Question"
+            android:theme="@android:style/Theme.Dialog"/>
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_provider" />
+        </provider>
     </application>
 
 </manifest>

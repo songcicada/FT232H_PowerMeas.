@@ -1,11 +1,20 @@
 package com.example.powermonitor;
 
+import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -15,110 +24,118 @@ import com.ftdi.j2xx.D2xxManager;
 public class Main extends AppCompatActivity
 {
     D2xxManager.FtDeviceInfoListNode m_DeviceList;
-    private I2C m_ftdi;
-    private TextView information_devSerialNo;
-    private TextView information_devname;
-    private TextView information_description;
-    private String m_strLog;
-    private Button btnfirst_page;
-    private Button btnfirst_page_yet;
-    private Button btnOpen;
-    private boolean openPage = false;
+    private I2C       m_ftdi;
+    private TextView  information_devSerialNo;
+    private TextView  information_devname;
+    private Button    btnfirst_page;
+    private ImageView Logo;
+    private ImageView btn_ft232h_connected;
+    private ImageView btn_ft232h_disconnected;
+    private Animation mbtn_ft232h_disconnected;
+    private Animation mbtnfirst_page;
+    private boolean   openPage = false;
+
+
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_page);
 
-        information_devSerialNo = (TextView) findViewById(R.id.device_serialNo);
-        information_devname     = (TextView) findViewById(R.id.dev_name);
-        information_description = (TextView) findViewById(R.id.dev_description);
-        btnfirst_page           = (Button) findViewById(R.id.btn_first_page);
-        btnfirst_page_yet       = (Button) findViewById(R.id.btn_first_page_yet);
-        btnOpen                 = (Button) findViewById(R.id.btnOpen);
+        information_devSerialNo = (TextView)  findViewById(R.id.dev_serialNo);
+        information_devname     = (TextView)  findViewById(R.id.dev_name);
+        Logo                    = (ImageView) findViewById(R.id.ablee_logo);
+        btnfirst_page           = (Button)    findViewById(R.id.btn_first_page);
+        btn_ft232h_disconnected = (ImageView) findViewById(R.id.ft232h_disconnected);
+        btn_ft232h_connected    = (ImageView) findViewById(R.id.ft232h_connected);
         m_ftdi                  = new I2C(this);
-
-
-        btnfirst_page.setVisibility(View.INVISIBLE);
-        btnfirst_page_yet.setVisibility(View.VISIBLE);
 
         btnfirst_page.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(final View v) {
-//                Toast.makeText(getApplicationContext(), m_DeviceList.serialNumber+" 연결", Toast.LENGTH_LONG).show();
-                Intent myintent = new Intent(Main.this, User_First.class);
-                FTDevCloseFunction();
+              //  Toast.makeText(getApplicationContext(), "T-PSE PM Module Activate", Toast.LENGTH_SHORT).show();
+                Intent myintent = new Intent(Main.this, PSE_PAGE.class);
+                m_ftdi.Ft232_CloseDevice();
                 startActivity(myintent);
                 finish();
             }
         });
-        btnfirst_page_yet.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(final View v)
-            {
-                Toast.makeText(getApplicationContext(), "Device 미연결", Toast.LENGTH_LONG).show();
-            }
-        });
+    }
+    public static final void updateStatusBarColor (Activity context, String color) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Window window = context.getWindow();
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.setStatusBarColor(Color.parseColor(color));
+        }
     }
 
-    public void ChangeBtn()
-    {
-        if (openPage == false) { btnfirst_page.setVisibility(View.INVISIBLE); btnfirst_page_yet.setVisibility(View.VISIBLE); }
-        else                   { btnfirst_page.setVisibility(View.VISIBLE); btnfirst_page_yet.setVisibility(View.INVISIBLE); }
-    }
+    public void btn_disconnected(View view) { DevOpenFunction(); }
 
-    public void btnOpenClicked(View view)
-    {
-        DevOpenFunction();
-    }
+    public void btn_connected(View view)    { DevCloseFunction();
+                                              updateStatusBarColor(Main.this,"#737375");
+                                              mbtnfirst_page = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.disconnection);
+                                              btnfirst_page.startAnimation(mbtnfirst_page);}
 
-    public void btnCloseClicked(View view)
-    {
-        DevCloseFunction();
-    }
-
+    @SuppressLint("MissingPermission")
     public void DevOpenFunction()
     {
         m_DeviceList = m_ftdi.Ft232_OpenDevice();
         if (m_DeviceList != null)
                                     {
-                                        m_strLog = m_DeviceList.description + " OPEN PASS";
-                                        information_devSerialNo.setText(m_DeviceList.serialNumber);
-                                        information_devname.setText(m_strLog);
-                                        information_description.setText("Connected");
                                         openPage = true;
                                         m_ftdi.I2C_Init();
                                         ChangeBtn();
-                                        btnOpen.setVisibility(View.GONE);
+                                        Vibrator vib = (Vibrator) getSystemService(VIBRATOR_SERVICE);
+                                        vib.vibrate(500);
+                                        updateStatusBarColor(Main.this,"#012d86");
                                     }
         else
                                     {
-                                        m_strLog = "OPEN FAIL";
-                                        information_devname.setText(m_strLog);
-                                        information_devSerialNo.setText("");
-                                        information_description.setText("Disconnected");
                                         openPage = false;                         // Debug 용은 true
                                         ChangeBtn();
-                                        btnOpen.setVisibility(View.GONE);
+                                        Vibrator vib = (Vibrator) getSystemService(VIBRATOR_SERVICE);
+                                        vib.vibrate(500);
+                                        mbtn_ft232h_disconnected = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.vibrate);
+                                        btn_ft232h_disconnected.startAnimation(mbtn_ft232h_disconnected);
+                                        updateStatusBarColor(Main.this,"#737375");
                                     }
     }
 
     public void DevCloseFunction()
     {
         m_ftdi.Ft232_CloseDevice();
-        m_strLog = "장비 종료";
-        information_devname.setText(m_strLog);
-        information_devSerialNo.setText("");
-        information_description.setText("Disconnected");
         openPage = false;
         ChangeBtn();
-        btnOpen.setVisibility(View.VISIBLE);
     }
 
-    public void FTDevCloseFunction()
+    public void ChangeBtn()
     {
-        m_ftdi.Ft232_CloseDevice();
+        if      (openPage == false) { when_disconnected();}
+        else if (openPage == true)  { when_connedcted();}
     }
+
+    public void when_disconnected()
+    {
+        btn_ft232h_disconnected.setVisibility(View.VISIBLE);
+        btn_ft232h_connected.setVisibility(View.GONE);
+        btnfirst_page.setVisibility(View.INVISIBLE);
+        information_devSerialNo.setText("");
+        information_devname.setText("");
+        Logo.setImageResource(R.drawable.ablee_logo_not);
+
+    }
+    public void when_connedcted()
+    {
+        btn_ft232h_disconnected.setVisibility(View.GONE);
+        btn_ft232h_connected.setVisibility(View.VISIBLE);
+        btnfirst_page.setVisibility(View.VISIBLE);
+        Logo.setImageResource(R.drawable.ablee_logo);
+        if(openPage == true) { mbtnfirst_page = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.connection); btnfirst_page.startAnimation(mbtnfirst_page); }
+        information_devSerialNo.setText(m_DeviceList.serialNumber);              // Debug 시 주석
+        information_devname.setText(m_DeviceList.description);                   // Debug 시 주석
+    }
+
+
 }
