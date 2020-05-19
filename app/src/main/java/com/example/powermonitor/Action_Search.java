@@ -30,13 +30,7 @@ public class Action_Search extends Activity
         //데이터 가져오기
         intent = getIntent();
         frequency = intent.getIntExtra("measurement_frequency",2000);
-        if(data != null)
-        {
-            data = String.valueOf(frequency);
-        } else
-        {
-            data = String.valueOf(2000);
-        }
+        data = String.valueOf(frequency);
         measurement_frequency.setText(data);
     }
 

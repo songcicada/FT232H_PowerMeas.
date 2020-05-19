@@ -1,15 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape xmlns:android="http://schemas.android.com/apk/res/android"
-    android:dither="true"
-    android:shape="rectangle">
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="#012d86">
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#012d86" />
+            <corners android:radius="10dp" />
+        </shape>
+    </item>
 
-    <corners android:radius="10dp" />
-    <size
-        android:width="250dp"
-        android:height="50dp" />
-    <stroke
-        android:width="3dp"
-        android:color="#012d86"/>
-    <solid android:color="#ffffff"/>
+    <item>
+        <shape android:shape="rectangle">
+            <gradient
+                android:angle="180"
+                android:endColor="#ffffff"
+                android:startColor="#ffffff"
+                android:type="linear" />
+            <corners android:radius="10dp" />
+            <stroke
+                android:width="2.5dp"
+                android:color="#012d86"/>
+        </shape>
+    </item>
+</ripple>
 
-</shape>
+
