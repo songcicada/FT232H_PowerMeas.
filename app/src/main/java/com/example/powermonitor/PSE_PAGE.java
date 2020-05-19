@@ -184,6 +184,7 @@ public class PSE_PAGE extends AppCompatActivity{
             case android.R.id.home:
                 Intent myintent = new Intent(PSE_PAGE.this, Main.class);
                 startActivity(myintent);
+                m_ftdi.Ft232_CloseDevice();
                 finish();
                 return true;
                 // 기능 추가 가능
@@ -498,10 +499,5 @@ public class PSE_PAGE extends AppCompatActivity{
         editor.commit();
     }
 
-    protected void onDestoy()
-    {
-        m_ftdi.Ft232_CloseDevice();
-        super.onDestroy();
-        Toast.makeText(getApplicationContext(), "PM Tool이 종료되었습니다.", Toast.LENGTH_LONG).show();
-    }
+
 }
