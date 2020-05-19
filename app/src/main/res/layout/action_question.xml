@@ -18,13 +18,14 @@
     <LinearLayout
         android:padding="25dp"
         android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#ffffff">
 
         <ImageView
             android:id="@+id/action_question_image"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_height="180dp"
             android:src="@drawable/action_question"
             />
     </LinearLayout>
