@@ -103,6 +103,7 @@ public class PSE_PAGE extends AppCompatActivity{
 
         // Action Bar 설정
         getSupportActionBar().setTitle("");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         // 초기 화면 세팅
         bundle                    = new Bundle();
@@ -180,6 +181,11 @@ public class PSE_PAGE extends AppCompatActivity{
             case R.id.action_question:
                 ActionQuestionClick();
                 break;
+            case android.R.id.home:
+                Intent myintent = new Intent(PSE_PAGE.this, Main.class);
+                startActivity(myintent);
+                finish();
+                return true;
                 // 기능 추가 가능
         }
         return super.onOptionsItemSelected(item);
