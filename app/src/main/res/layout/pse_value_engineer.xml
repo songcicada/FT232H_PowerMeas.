@@ -189,7 +189,7 @@
             android:layout_weight = "1">
 
         <TextView
-                android:text="PS3_V"
+                android:text="OCP"
                 android:layout_width="35dp"
                 android:layout_height="40dp"
                 android:gravity="center"
@@ -197,7 +197,7 @@
                 android:fontFamily="@font/ridi"
                 android:textStyle="bold"/>
             <TextView
-                android:id="@+id/PS3_V"
+                android:id="@+id/PS3_OCP"
                 android:layout_width="35dp"
                 android:layout_height="40dp"
                 android:gravity="center_vertical|right"
@@ -206,7 +206,7 @@
                 android:fontFamily="@font/gmarketsanslight" />
 
             <TextView
-                android:text="OCP"
+                android:text="PS3_V"
                 android:layout_width="35dp"
                 android:layout_height="40dp"
                 android:gravity="center"
@@ -215,7 +215,7 @@
                 android:textStyle="bold"/>
 
             <TextView
-                android:id="@+id/PS3_OCP"
+                android:id="@+id/PS3_V"
                 android:layout_width="35dp"
                 android:layout_height="40dp"
                 android:gravity="center_vertical|right"
